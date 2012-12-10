@@ -1,5 +1,15 @@
 $(document).ready(function(e) {
 
+	function prev_def (e) {
+		// Предотвращаем дальнейшее всплытие события
+		if (e.stopPropagation) e.stopPropagation();
+		else e.cancelBubble = true;
+
+		// Отменяем действие по умолчанию для события
+		if (e.preventDefault) e.preventDefault();
+		else e.returnValue = false;		
+	}
+
 // устанавливаем размеры контента и меню
 	var wh = document.height-100;
 	var ww = document.width-100;
@@ -25,15 +35,13 @@ $(document).ready(function(e) {
 	$('#showmenu').toggle(
 		function(e) {
 			$('#menu').toggle("slide", {direction: "left"}, 300);
-			e.stopImmediatePropagation();
     		$(this).text('< menu');
-    		return false;
+			prev_def(e);
 		}, 
 		function(e) {
     		$('#menu').toggle("slide", {direction: "left"}, 300);
-			e.stopImmediatePropagation();
     		$(this).text('> menu');
-    		return false;
+    		prev_def(e);
 		}
 	);
 
@@ -52,33 +60,18 @@ $(document).ready(function(e) {
 		// собственно само событие, для ИЕ берем из window
 		e = e || window.event;
 
-		// Предотвращаем дальнейшее всплытие события
-		if (e.stopPropagation) e.stopPropagation();
-		else e.cancelBubble = true;
-
-		// Отменяем действие по умолчанию для события
-		if (e.preventDefault) e.preventDefault();
-		else e.returnValue = false;		
+		prev_def(e);
 	};
 
 	$(document).keydown(function(e){
-		if(e.keyCode ==39){
+		if((e.keyCode == 39) || (e.keyCode == 40)){
 			var direction = -1;
-		} else if (e.keyCode == 37) {
+		} else if ((e.keyCode == 37) || (e.keyCode == 38)) {
 			var direction = 1;
-		}
-		$('#content').stop(true,true,true).animate({ scrollLeft : $('#content').scrollLeft()-direction*(col_w+26) },250);
-
-		// Предотвращаем дальнейшее всплытие события
-		if (e.stopPropagation) e.stopPropagation();
-		else e.cancelBubble = true;
-
-		// Отменяем действие по умолчанию для события
-		if (e.preventDefault) e.preventDefault();
-		else e.returnValue = false;		
+		} else {return;}
+			$('#content').stop(true,true,true).animate({ scrollLeft : $('#content').scrollLeft()-direction*(col_w+26) },250);
+			prev_def(e);
 	});
-
-
 
 });
 

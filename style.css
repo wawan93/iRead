@@ -8,12 +8,12 @@ h1 {
 
 #menu {
 	margin:50px; padding:0;
-	width: 1000px; height: 600px; 
+	width: 1000px; height: 400px; 
 	background: #ddd; 
 	border: 1px solid #f1f1f1;
 	left:0; top:0;
-	display:none;
-	column:2;
+	display: none;
+	column-count:2;
 }
 
 .menu-break {
@@ -24,18 +24,19 @@ h1 {
 #showmenu {
 	position:fixed; 
 	top:0; left:0; 
-	background: #eee;
+	background: #666;
 	margin:0; padding:10px 17px; 
-	color:#666;
+	color:#eee;
 	font-family:;}
 
 #content {
 	position:absolute;
 	height: 600px;
 	width:600px;
-	margin:50px; padding:0;
-	overflow: auto;
+	margin:50px; padding:1px;
+	overflow: hidden;
 	text-align: justify;
+
 	
 	-webkit-column-width: 500px;
 	-moz-column-width: 500px;
