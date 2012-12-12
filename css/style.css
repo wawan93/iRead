@@ -33,7 +33,7 @@ h1 {
 	position:absolute;
 	height: 600px;
 	width:600px;
-	margin:50px; padding:1px;
+	margin:50px; padding:0px;
 	overflow: hidden;
 	text-align: justify;
 
@@ -46,7 +46,12 @@ h1 {
 	-moz-column-gap: 50px;
 	column-gap: 50px;
 
-	-moz-column-rule: 1px dotted #ccc;
-	-webkit-column-rule: 1px dotted #ccc;
-	column-rule: 1px dotted #ccc;
+	-moz-column-rule: 2px dotted #ccc;
+	-webkit-column-rule: 2px dotted #ccc;
+	column-rule: 2px dotted #ccc;
+}
+
+#content img {
+	    break-before: column;
+	    max-width: 600px;
 }

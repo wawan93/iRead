@@ -17,22 +17,36 @@ $(document).ready(function(e) {
 
 // функция загрузки контента по AJAX
 	function ajax_load (u) {
-		$.ajax(u).done(function ( data ) {
+		$.ajax({
+			'url':'get.php',
+			data:{'url':u},
+			beforeSend: function ( xhr ) {
+				$('#content').html('<h1>LOADING...</h1><p>Please wait...</p>');
+			}
+
+		})
+		.done(function ( data ) {
 			$('#content').html(data);
 			$('#content').scrollLeft(0);
-			$('#showmenu').click();
 		});
+	}
+
+	if (location.hash != '') {
+		ajax_load(location.hash.replace(/^#/,''));
+	} else {
+		$('#showmenu').click();
 	}
 
 	$(window).bind('hashchange', function() {
 		if (location.hash != '') {
-			alert();
+			ajax_load(location.hash.replace(/^#/,''));
 		}
 	});
 
 	$('#menu a').click(function (e) {
 
-		ajax_load(this.href);
+		location.hash = this.href;
+		$('#showmenu').click();
 
 		prev_def(e);
 		return false;
@@ -70,7 +84,7 @@ $(document).ready(function(e) {
 
 	    var direction = ((e.wheelDelta) ? e.wheelDelta/120 : e.detail/-3) || false;
 	    
-	    $('#content').stop(true,true,true).animate({ scrollLeft : $('#content').scrollLeft()-direction*(col_w+25) },250);
+	    $('#content').stop(true,true,true).animate({ scrollLeft : $('#content').scrollLeft()-direction*(col_w+26) },250);
 
 		// собственно само событие, для ИЕ берем из window
 		e = e || window.event;
@@ -103,6 +117,15 @@ $(document).ready(function(e) {
     		prev_def(e);
 		}
 	);
+
+// обработчик формы
+	$('#form').submit(function(e) { 
+        $u = $('#form input:first').val();
+		ajax_load($u);
+		$('#showmenu').click();
+        prev_def(e);
+        return false;
+    }); 
 
 });
 
