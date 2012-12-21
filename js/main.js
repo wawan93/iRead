@@ -42,6 +42,10 @@ hljs.initHighlightingOnLoad();
 		'width':ww,
 		'height':wh
 	});
+	$('img').css({
+		'max-height':wh,
+		'max-width':col_w
+	});
 
 
 // вешаем обработчик на клик для переключения между контентом и меню
