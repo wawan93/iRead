@@ -36,20 +36,18 @@ hljs.initHighlightingOnLoad();
 	var ww = document.width-100;
 	if (ww % 2 != 0) {ww--;}
 	var col_w = ww/2;
-
-	$('#content').css({
-		'width':ww,
-		'height':wh,
-		'-webkit-column-width:':col_w,
-		'-moz-column-width:':col_w,
-		'column-width:':col_w
-	});
+	alert(ww + '\n' + wh+'\n'+col_w);
+	$('#content').css('height',wh);
+	// $('#content').css({
+	// 	'width':ww,
+	// 	'height':wh,
+	// 	'-webkit-column-width:':col_w,
+	// 	'-moz-column-width:':col_w,
+	// 	'column-width:':col_w
+	// });
 	$('#menu').css({
 		'width':ww,
-		'height':wh,
-		'-webkit-column-width:':col_w,
-		'-moz-column-width:':col_w,
-		'column-width:':col_w
+		'height':wh
 	});
 
 

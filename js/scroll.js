@@ -26,7 +26,9 @@
 
 	    var direction = ((e.wheelDelta) ? e.wheelDelta/120 : e.detail/-3) || false;
 	    
-	    $('#content').stop(true,true,true).animate({ scrollLeft : $('#content').scrollLeft()-direction*(c+25) },250);
+	    $('#content').stop(true,true,true).animate({ 
+	    	scrollLeft : $('#content').scrollLeft()-direction*(((document.width-100)/2)+25) 
+	    },250);
 
 		// собственно само событие, для ИЕ берем из window
 		e = e || window.event;
