@@ -42,7 +42,11 @@
 		} else if ((e.keyCode == 37) || (e.keyCode == 38)) {
 			var direction = 1;
 		} else {return;}
-			$('#content').stop(true,true,true).animate({ scrollLeft : $('#content').scrollLeft()-direction*(c+25) },250);
+		    $('#content').stop(true,true,true)
+			    .animate({ 
+			    	scrollLeft : $('#content').scrollLeft()-direction*(((document.width-100)/2)+25) 
+			    },250);
+			    
 			prev_def(e);
 	});
  })();
