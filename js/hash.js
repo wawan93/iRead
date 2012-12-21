@@ -1,4 +1,4 @@
- (function(){
+
 // функция загрузки контента по AJAX
 	function ajax_load (u) {
 		$.ajax({
@@ -26,4 +26,3 @@
 			ajax_load(location.hash.replace(/^#/,''));
 		}
 	});
- })();

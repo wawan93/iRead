@@ -89,17 +89,36 @@ return $ret;
 	$ch_set = $res['charset'];
 
 	$content = $res['content'];
-	// if ($ch_set != "utf-8") $content = iconv($ch_set, "UTF-8", $content);
+	// echo mb_detect_encoding($content); 
+	// if (mb_detect_encoding($content) != "UTF-8") $content = mb_convert_encoding($content, "UTF-8");
+
 // echo $host;
 $saw = new nokogiri($content);
-if ($host == 'habrahabr.ru') {
-	echo $saw->get('.content')->toXml();
-} else if ($host == 'gazeta.ru') {
-	echo $saw->get('article')->toXml();
-} else {
-	echo $content;
-}
 
+ $article_array = array(
+ 	'gazeta.ru', 'news.mail.ru'
+ );
+
+$content = preg_replace('#<script[^>]*>.*?</script>#is', '', $content);
+$content = preg_replace('#<head[^>]*>.*?</head>#is', '', $content);
+$content = preg_replace('#<style[^>]*>.*?</style>#is', '', $content);
+$content = preg_replace('#<form[^>]*>.*?</form>#is', '', $content);
+$content = preg_replace('#<noscript[^>]*>.*?</noscript>#is', '', $content);
+$content = preg_replace('#<footer[^>]*>.*?</footer>#is', '', $content);
+$content = preg_replace('#<header[^>]*>.*?</header>#is', '', $content);
+$content = preg_replace('#<aside[^>]*>.*?</aside>#is', '', $content);
+
+$content = strip_tags($content, '<p><br><span><h1><h2><h3><h4><a><code><pre><b><i><strong><em><ul><ol><li>');
+
+// if ($host == 'habrahabr.ru') {
+// 	echo $saw->get('.content')->toXml();
+// } else if (in_array($host, $article_array)) {
+// 	echo $saw->get('article')->toXml();
+// } else if ($host == 'bash.im') {
+// 	echo $saw->get('.text')->toXml();
+// } else {
+	echo $content;
+// }
 // foreach ($saw->get('.content') as $link){
 //     var_dump($link['#text']);
 // }
