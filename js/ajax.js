@@ -11,7 +11,11 @@
 		})
 		.done(function ( data ) {
 			$('#content').html(data);
-			$('#content').scrollLeft(0);
+			var name = $('#filename').val().replace(/^.*[\/\\]/g, '');
+			if (location.hash != '') {name = location.hash;}
+			if ($.cookie(name)>0) {$('#content').scrollLeft($.cookie(name));}
+			else {$('#content').scrollLeft(0)};
+			$('pre code').each(function(i, e) {hljs.highlightBlock(e)});
 		});
 	}
 

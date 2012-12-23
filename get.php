@@ -28,10 +28,6 @@ if ($host == 'habrahabr.ru') {
 	$text = str_replace("<root>", "", $text);
 	$text = str_replace("</root>", "", $text);
 	echo $text;
-} else if (in_array($host, $article_array)) {
-	echo $saw->get('article')->toXml();
-} else if ($host == 'bash.im') {
-	echo $saw->get('.text')->toXml();
 } else {
 	$content = preg_replace('#<script[^>]*>.*?</script>#is', '', $content);
 	$content = preg_replace('#<head[^>]*>.*?</head>#is', '', $content);
@@ -40,6 +36,5 @@ if ($host == 'habrahabr.ru') {
 	$content = preg_replace('#<noscript[^>]*>.*?</noscript>#is', '', $content);
 	$content = preg_replace('#<footer[^>]*>.*?</footer>#is', '', $content);
 	$content = preg_replace('#<header[^>]*>.*?</header>#is', '', $content);
-	$content = preg_replace('#<aside[^>]*>.*?</aside>#is', '', $content);
 	echo $content;
 }

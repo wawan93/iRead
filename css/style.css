@@ -10,6 +10,8 @@ h1 {
 	text-align: center;
 }
 
+p{margin: 5px;padding: 5px;}
+
 #menu {
 	margin:50px; padding:0;
 	width: 1000px; height: 400px; 
@@ -34,6 +36,7 @@ h1 {
 	font-family:;}
 
 #content {
+	display: inline-block;
 	position:absolute;
 	margin:50px; padding:0px;
 	overflow: hidden;
@@ -42,8 +45,6 @@ h1 {
 	font-family: 'Ubuntu', sans-serif;
 
 	
-    -moz-column-count: 2;
-    -moz-column-width: 200px;
     -webkit-column-count: 2;
     -webkit-column-width: 200px;
     column-count: 2;
@@ -59,6 +60,25 @@ h1 {
 }
 
 #content img {
-	    break-before: column;
-	    max-width: 600px;
+	break-before: column;
+	max-width: 600px;
+    margin: 5px;
 }
+
+pre, code {
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, начиная с 1999 года\*/
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+table {
+    margin: 5px;
+    padding: 5px;
+    break-before: column;
+    page-break-before: always;
+}
+td,th {margin:0;border: 1px solid #ccc;}
+
+
+

@@ -41,7 +41,12 @@
 			var direction = -1;
 		} else if ((e.keyCode == 37) || (e.keyCode == 38)) {
 			var direction = 1;
-		} else {return;}
+		} else if (e.keyCode == 68) {
+			// var range = document.selection.createRange();
+			alert(1);
+			// alert(range.boundingLeft + '\n' + range.boundingTop);
+		}
+		else {return;}
 		    $('#content').stop(true,true,true)
 			    .animate({ 
 			    	scrollLeft : $('#content').scrollLeft()-direction*(((document.width-100)/2)+25) 

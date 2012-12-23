@@ -1,6 +1,6 @@
 $(document).ready(function(e) {
 
-hljs.initHighlightingOnLoad();
+	hljs.initHighlightingOnLoad();
 	$.ajaxSetup({cache:true});
 
 // выносим в отдельную функцию, т.к. часто используется
@@ -29,22 +29,6 @@ hljs.initHighlightingOnLoad();
 	 	location.hash = this.href;	 	
 		prev_def(e);
 		return false;
-	});
-
-// устанавливаем размеры контента и меню
-	var wh = document.height-100;
-	var ww = document.width-100;
-	if (ww % 2 != 0) {ww--;}
-	var col_w = ww/2;
-	
-	$('#content').css('height',wh);
-	$('#menu').css({
-		'width':ww,
-		'height':wh
-	});
-	$('img').css({
-		'max-height':wh,
-		'max-width':col_w
 	});
 
 
